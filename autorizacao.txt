@@ -1,0 +1,44 @@
+AUTENTICACAO => AUTORIZACAO
+
+CRM - SISTEMA DE GESTAO COMPLETA
+
+    projetos -> (ver todos, ver um, adicionar, editar, excluir, compartilhar)
+    financeiro -> (ver todos, ver um, adicionar_conta, editar_conta_bancaria, excluir)
+    produtos -> (ver todos, ver um produto, adionar um produto, editar, excluir, compatilhar, alterar imagem)
+    estoque -> (ver todos, ver um, adicionar, editar, excluir)
+
+    GET /admin/projetos PermissionMiddleware(id_usuario, 'projeto', ['getAll']) - id do usuario logado, dominio da aplicacao, permissoes da rota
+    
+    GET - /admin/projeto/:id
+    PermissionMiddleware(id_usuario, 'projeto', ['getById'])
+
+    POST - /admin/projeto
+    PermissionMiddleware(id_usuario, 'projeto', ['add'])
+
+    PUT - /admin/projeto
+    PermissionMiddleware(id_usuario, 'projeto', ['update'])
+
+    DELETE - /admin/projeto
+    PermissionMiddleware(id_usuario, 'projeto', ['delete'])
+
+    ------------------------------------------------------------------
+
+USUARIOS 
+    id 
+    nome
+    email
+    senha
+    id_grupo_usuario: 2
+
+GRUPO DE USUARIOS
+    id: 2
+    nome: 'administrador'
+
+PERMISSOES  
+    id: erwr
+    id_grupo: 2
+    dominio: 'projeto',
+    permissoes: ['getAll', 'getById', 'add', 'update', 'delete']
+
+
+
