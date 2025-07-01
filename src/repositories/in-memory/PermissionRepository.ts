@@ -31,6 +31,17 @@ class PermissionRepository {
         
     }
 
+    getPermissions(user_group: number, domain: string) {
+        let result = {}
+        this.permissions.map((item) => {
+            if(item.user_group === user_group && item.domain === domain) {
+                result = item;
+            }
+        })
+
+        return result;
+    }
+
 }
 
 

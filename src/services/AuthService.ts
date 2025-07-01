@@ -8,6 +8,7 @@ import InMemoryUserRepository from "../repositories/in-memory/InMemoryUserReposi
 class AuthService {
 
     async execute(dadosValidados: AuthInterface) {
+
         const inMemoryUserRepository = new InMemoryUserRepository;
         const dataUser = await inMemoryUserRepository.getByEmail(dadosValidados.email);
         const ifPasswordCorrect = await bcrypt.compare(dadosValidados.password, dataUser.password);
@@ -23,6 +24,7 @@ class AuthService {
         
         const token = generateAuthToken(dataUser, process.env.JWT_EXPIRES_IN as string);
         const refresh_token = generateAuthToken(dataUser, process.env.JWT_REFRESH_EXPIRES_IN as string);
+
         return {token, refresh_token}
     }
 
@@ -42,6 +44,7 @@ class AuthService {
         const refresh_token = generateAuthToken(payloadJWT, process.env.JWT_REFRESH_EXPIRES_IN as string);
         
         console.log(token, refresh_token)
+        
         return {token, refresh_token}
     
     }

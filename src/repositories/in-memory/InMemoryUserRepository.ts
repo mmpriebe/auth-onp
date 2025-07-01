@@ -12,7 +12,7 @@ class InMemoryUserRepository {
                 email: 'marciano@gmail.com',
                 phone: '51 98989898',
                 password: '$2b$10$1W8trKj4tjTD7.qQ1jsfluqi.YJeQLayNJaKzv88X3Lmygsf58bUG',
-                user_group: 1
+                user_group: 2
             },
             {
                 id: '550725e3-b736-49c6-b268-a57baee99ffc',
@@ -38,6 +38,16 @@ class InMemoryUserRepository {
         return user[0];
     }
 
+    getById(id: string){
+        let user = {};
+        this._users.map((item) => {
+            if(item.id === id) {
+                user = item;
+            }
+        })
+
+        return user;
+    }
 
 }
 
