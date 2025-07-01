@@ -16,8 +16,15 @@ class UserGroupRepository {
         return this.userGroups;
     }
 
-    getById(){
-        
+    getById(id: number){
+        let result = {};
+        this.userGroups.map((item) => {
+            if(item.id === id) {
+                result = id;
+            }
+        })
+
+        return result;
     }
 
 }
